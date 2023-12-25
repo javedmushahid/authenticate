@@ -31,7 +31,7 @@ const Dashboard = () => {
     data: passengers,
     error,
     mutate,
-  } = useSWR("http://viaduct.proxy.rlwy.net:42599/get-all-tickets", fetcher);
+  } = useSWR("https://authenticate-api-production.up.railway.app/get-all-tickets", fetcher);
   // console.log("passengers", passengers);
   const router = useRouter();
 
@@ -40,7 +40,7 @@ const Dashboard = () => {
   const handleUpdatePassenger = async (updatedDetails) => {
     try {
       await axios.put(
-        `http://viaduct.proxy.rlwy.net:42599/update-ticket/${updatedDetails._id}`,
+        `https://authenticate-api-production.up.railway.app/update-ticket/${updatedDetails._id}`,
         updatedDetails
       );
       // Refresh the data by re-fetching
@@ -54,7 +54,7 @@ const Dashboard = () => {
   const handleDeletePassenger = async (passengerToDelete) => {
     try {
       await axios.delete(
-        `http://viaduct.proxy.rlwy.net:42599/delete-ticket/${passengerToDelete._id}`
+        `https://authenticate-api-production.up.railway.app/delete-ticket/${passengerToDelete._id}`
       );
       // Refresh the data by re-fetching
       mutate();

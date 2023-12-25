@@ -25,7 +25,7 @@ const fetcher = async (url) => {
 const BusUI = () => {
   const router = useRouter();
   const { data: allTickets, error } = useSWR(
-    "http://viaduct.proxy.rlwy.net:42599/get-all-tickets",
+    "https://authenticate-api-production.up.railway.app/get-all-tickets",
     fetcher
   );
   // const [allTickets, setAllTickets] = useState([]);
@@ -107,7 +107,7 @@ const BusUI = () => {
       console.log("ticketadata", ticketData);
       // Make the API request to add the ticket
       const response = await axios.post(
-        "http://viaduct.proxy.rlwy.net:42599/add-ticket",
+        "https://authenticate-api-production.up.railway.app/add-ticket",
         ticketData
       );
 
@@ -115,7 +115,7 @@ const BusUI = () => {
 
       setOpenDialog(false);
       // fetchBookedSeats();
-      mutate("http://viaduct.proxy.rlwy.net:42599/get-all-tickets");
+      mutate("https://authenticate-api-production.up.railway.app/get-all-tickets");
 
       router.reload();
     } catch (error) {
