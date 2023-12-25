@@ -1,0 +1,7 @@
+const userRole = {
+  User: 1,
+  Mentor: 2,
+  admin: 3,
+};
+
+module.exports = { userRole };
