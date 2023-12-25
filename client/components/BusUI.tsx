@@ -25,7 +25,7 @@ const fetcher = async (url) => {
 const BusUI = () => {
   const router = useRouter();
   const { data: allTickets, error } = useSWR(
-    "http://localhost:8080/get-all-tickets",
+    "http://viaduct.proxy.rlwy.net:42599/get-all-tickets",
     fetcher
   );
   // const [allTickets, setAllTickets] = useState([]);
@@ -107,7 +107,7 @@ const BusUI = () => {
       console.log("ticketadata", ticketData);
       // Make the API request to add the ticket
       const response = await axios.post(
-        "http://localhost:8080/add-ticket",
+        "http://viaduct.proxy.rlwy.net:42599/add-ticket",
         ticketData
       );
 
@@ -115,7 +115,7 @@ const BusUI = () => {
 
       setOpenDialog(false);
       // fetchBookedSeats();
-      mutate("http://localhost:8080/get-all-tickets");
+      mutate("http://viaduct.proxy.rlwy.net:42599/get-all-tickets");
 
       router.reload();
     } catch (error) {
@@ -299,7 +299,7 @@ const BusUI = () => {
             fullWidth
           />
           <TextField
-            label="Date of Booking"
+            placeholder="Date of Booking"
             type="date"
             value={selectedDate}
             onChange={(e) => handleDateChange(e.target.value)}
