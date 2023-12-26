@@ -2,8 +2,10 @@ import { Box, Breadcrumbs, Link, Typography } from "@mui/material";
 import Head from "next/head";
 import React from "react";
 import BusUI from "../components/BusUI";
+import Bus from "../components/BusUI";
 import NextLink from "next/link"; // Import next/link
 import Layout from "../components/Layout";
+import BusComponent from "../components/Bus";
 
 const ReservationStyle = {
   backgroundColor: "#f0f0f0", // Set a background color
@@ -32,7 +34,9 @@ const Reservation = () => {
           Please select a seat to book
         </Typography>
       </Box>
-      <BusUI />
+      {/* <BusUI /> */}
+      {/* <Bus /> */}
+      <BusComponent />
     </Layout>
   );
 };

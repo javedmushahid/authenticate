@@ -71,6 +71,7 @@ const BusUI = () => {
   // console.log("Selected seats", selectedSeats);
   // console.log("allTickets", allTickets);
   // console.log("bookedSeats", bookedSeats);
+
   const isSeatBooked = (seatNumber) => {
     return (
       allTickets &&
@@ -79,6 +80,7 @@ const BusUI = () => {
       )
     );
   };
+
   const isAnySelectedSeatBooked = () => {
     return selectedSeats.some(isSeatBooked);
   };
@@ -115,7 +117,9 @@ const BusUI = () => {
 
       setOpenDialog(false);
       // fetchBookedSeats();
-      mutate("https://authenticate-api-production.up.railway.app/get-all-tickets");
+      mutate(
+        "https://authenticate-api-production.up.railway.app/get-all-tickets"
+      );
 
       router.reload();
     } catch (error) {
@@ -194,14 +198,16 @@ const BusUI = () => {
               </Box>
               <Box>
                 <Image
-                  onClick={() => handleSeatClick(index + 100)}
+                  onClick={() => handleSeatClick(index + 100 - 100 + index)}
                   src="/images/car-seat.png"
                   alt={`Bus Seat ${index}`}
                   width={40}
                   height={40}
                   style={{
                     cursor: "pointer",
-                    backgroundColor: selectedSeats.includes(index + 100)
+                    backgroundColor: selectedSeats.includes(
+                      index + 100 - 100 + index
+                    )
                       ? "#D23F57"
                       : isSeatBooked(index + 100)
                       ? "#CCCCCC"
@@ -209,14 +215,16 @@ const BusUI = () => {
                   }}
                 />
                 <Image
-                  onClick={() => handleSeatClick(index + 200)}
+                  onClick={() => handleSeatClick(index + 200 - 200 + index + 1)}
                   src="/images/car-seat.png"
                   alt={`Bus Seat ${index}`}
                   width={40}
                   height={40}
                   style={{
                     cursor: "pointer",
-                    backgroundColor: selectedSeats.includes(index + 200)
+                    backgroundColor: selectedSeats.includes(
+                      index + 200 - 200 + index + 2
+                    )
                       ? "#D23F57"
                       : isSeatBooked(index + 200)
                       ? "#CCCCCC"
