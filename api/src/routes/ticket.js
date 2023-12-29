@@ -6,6 +6,7 @@ const {
   updateTicket,
   deleteTicket,
   resetAllTickets,
+  isAdmin,
 } = require("../controllers/ticket");
 
 const ticketRoute = express.Router();
@@ -16,6 +17,6 @@ ticketRoute.get("/get-all-tickets", getAllTicket);
 
 ticketRoute.put("/update-ticket/:ticketId", updateTicket);
 ticketRoute.delete("/delete-ticket/:ticketId", deleteTicket);
-ticketRoute.put("/reset-all-tickets", resetAllTickets);
+ticketRoute.put("/reset-all-tickets", isAdmin, resetAllTickets);
 
 module.exports = ticketRoute;
